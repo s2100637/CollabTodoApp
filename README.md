@@ -1,6 +1,6 @@
 # Todo application!
 ## About
-Oh, yes, classic todo for a while. Basicly a collab project with a fellow student for testing and training.
+Oh, yes, classic to-do for a while. Basically a collab project with a fellow student for testing and training.
 
 ## Features
-(Will be addes later)
+(Will be added later)
