@@ -11,5 +11,5 @@ Java 11
 ## Updates
 - Java 11 and Junit5 dependencies
 - Shade plugin
-- Jacoco plugin
-- Checkstyle and jxr
+- Jacoco plugin (run with: "mvn test jacoco:report")
+- Checkstyle and jxr (run with: "mvn jxr:jxr checkstyle:checkstyle")
