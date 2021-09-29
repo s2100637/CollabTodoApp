@@ -4,7 +4,16 @@ public class Todo {
     private int id;
     private String content;
     private boolean done;
+    //date when created
+    //start date
+    //expiration date
 
+    /**
+     * Constructors.
+     * @param id primary key
+     * @param content actual content for todo
+     * @param done is todo done @return true/false
+     */ 
     public Todo(int id, String content, boolean done) {
         this.id = id;
         this.content = content;
@@ -32,6 +41,10 @@ public class Todo {
     }
 
     /* Need for a toggle? */
+    /** 
+     * Toggles the value of done, true if false, false if true etc.
+     * No parameters
+    */
     public void toggleDone() {
         this.done = done ? false : true;
     }
