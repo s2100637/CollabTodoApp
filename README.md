@@ -13,3 +13,4 @@ Java 11
 - Shade plugin
 - Jacoco plugin (run with: "mvn test jacoco:report")
 - Checkstyle and jxr (run with: "mvn jxr:jxr checkstyle:checkstyle")
+- Javadoc (run with: "mvn javadoc:javadoc" if need for html view)
