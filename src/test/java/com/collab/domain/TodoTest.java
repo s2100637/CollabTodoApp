@@ -11,14 +11,19 @@ public class TodoTest {
 
     @BeforeEach
     public void setUp() {
-        this.todo = new Todo(1, "sisältää juu", false);
+        this.todo = new Todo(1, "Otsikko", "sisältää juu", false);
+    }
+
+    @Test
+    void testHeading() {
+        assertEquals("Otsikko", todo.getHeading());
     }
 
     @Test
     void testGetContent() {
         assertNotEquals("sisältää ", todo.getContent());
         assertEquals("sisältää juu", todo.getContent());
-        
+
     }
 
     @Test
