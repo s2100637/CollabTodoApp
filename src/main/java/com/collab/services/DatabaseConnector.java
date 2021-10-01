@@ -33,8 +33,8 @@ public class DatabaseConnector {
     public void initDatabase() {
         String sql = "CREATE TABLE IF NOT EXISTS Todos (\n" 
                 + "id INTEGER PRIMARY KEY, \n" 
-                + "heading TEXT, \n"
-                + "content TEXT, \n" 
+                + "heading TEXT check(length(heading) <= 20), \n"
+                + "content TEXT check(length(content) <= 500), \n" 
                 + "done INTEGER NOT NULL check(done = 1 OR done = 0));";
 
                 // try w/resources, closes the connection after use
@@ -42,9 +42,11 @@ public class DatabaseConnector {
                     Statement statement = connection.createStatement();
                     statement.execute(sql);
                     System.out.println("Tietokanta luotu");
+                    System.out.println(connection.isClosed());
                 } catch (SQLException e) {
                     System.out.println(e.getMessage());
-                }
+                } 
+                
     }
 
 }
