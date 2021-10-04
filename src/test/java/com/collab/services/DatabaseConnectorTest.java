@@ -5,9 +5,10 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -20,31 +21,33 @@ public class DatabaseConnectorTest {
     void setUp() {
         this.dummyConnector = new DatabaseConnector(url);
         this.dummyConnection = dummyConnector.createConnection();
+        dummyConnector.initDatabase();
 
     }
+
     @Test
     void testCreateConnection() throws SQLException {
         assertNotNull(dummyConnection);
         assertFalse(dummyConnection.isClosed());
 
-        dummyConnection.close();
-        assertTrue(dummyConnection.isClosed());
     }
 
     @Test
     void testInitDatabase() throws SQLException {
-        
 
     }
-    /*//Get master table:
-        SELECT * FROM sqlite_master 
-        WHERE type="table"; */
-    /* //Get schema: 
-        PRAGMA table_info(Todos);
-    */
+
+    /*
+     * //Get master table: SELECT * FROM sqlite_master WHERE type="table";
+     */
+    /*
+     * //Get schema: PRAGMA table_info(Todos);
+     */
     /* Drop tables after testing? */
-    @AfterAll
-    void tearDown() {
-        
+    @AfterEach
+    void tearDown() throws SQLException {
+        PreparedStatement pStatement = dummyConnection.prepareStatement("DROP TABLE Todos;");
+        pStatement.executeUpdate();
+
     }
 }

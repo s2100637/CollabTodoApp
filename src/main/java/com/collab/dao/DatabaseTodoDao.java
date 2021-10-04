@@ -73,6 +73,7 @@ public class DatabaseTodoDao implements Dao<Todo, Integer> {
     /* List all todos. Updates list and returns it */
     @Override
     public List<Todo> list() throws SQLException {
+        todos.clear();
         PreparedStatement pStatement = connection.prepareStatement("SELECT * FROM Todos;");
         ResultSet resultSet = pStatement.executeQuery();
         while (resultSet.next()) {
@@ -81,5 +82,6 @@ public class DatabaseTodoDao implements Dao<Todo, Integer> {
         }
         return todos;
     }
+    
 
 }

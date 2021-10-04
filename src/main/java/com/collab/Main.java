@@ -20,12 +20,10 @@ public class Main {
         DatabaseConnector sConnector = new DatabaseConnector(url);
         /* sConnector.initDatabase(); */
         Connection conn = sConnector.createConnection();
+
         DatabaseTodoDao databaseTodoDao = new DatabaseTodoDao(conn);
 
-        Todo newTodo = databaseTodoDao.read(1);
-        newTodo.toggleDone();
-        databaseTodoDao.update(newTodo);
-        System.out.println(databaseTodoDao.list());
+        
 
     }
     
