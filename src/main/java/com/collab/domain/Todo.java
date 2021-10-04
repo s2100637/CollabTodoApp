@@ -10,21 +10,25 @@ public class Todo {
     // expiration date
 
     /**
-     * Constructors for getting dao.
+     * Constructors for getting tododao.
      * 
      * @param id      primary key
      * @param heading heading gor todo
      * @param content actual content for todo
      * @param done    is todo done @return true/false
      */
-    public Todo(int id, String heading, String content, boolean done) {
+
+     /**
+      * Constructor for reading tododao 
+       */ 
+    public Todo(int id, String heading, String content, String done) {
         this.id = id;
         this.heading = heading;
         this.content = content;
-        this.done = done;
+        this.done = convertStrToBool(done);
     }
     /**
-     * Construtor when creating new dao
+     * Construtor when creating new tododao
      *  */
     public Todo(String heading, String content) {
         this.id = -1;
@@ -58,10 +62,27 @@ public class Todo {
     }
 
     /**
-     * Toggles the value of done, true if false, false if true etc. No parameters
+     * Toggles the value of done, true to false, false to true. No parameters
      */
     public void toggleDone() {
         this.done = done ? false : true;
+    }
+    /**
+     * Converts current boolean done value to String value, for sqlite database 
+     */
+    public String convertDone() {
+        return String.valueOf(done);
+    }
+    /**
+    * Converts given string value to bool if applicable
+     */
+    public boolean convertStrToBool(String n) {
+        return Boolean.valueOf(n);
+    }
+    /* Do we really need this? */
+    @Override
+    public String toString() {
+        return "id: "+id+"\nHeading: "+heading+"\nDone? "+done;
     }
 
 }

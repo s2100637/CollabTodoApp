@@ -6,32 +6,28 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 
+import com.collab.dao.DatabaseTodoDao;
+import com.collab.domain.Todo;
 import com.collab.services.DatabaseConnector;
 
-
 public class Main {
-    
+
     public static void main(String[] args) throws SQLException {
         /* Testausta varten */
         String url = "jdbc:sqlite:testi.db";
         DatabaseConnector sConnector = new DatabaseConnector(url);
+        /* sConnector.initDatabase(); */
         Connection conn = sConnector.createConnection();
-        sConnector.initDatabase();
+        DatabaseTodoDao databaseTodoDao = new DatabaseTodoDao(conn);
 
-        /* Get columns from Todos */
-        /* ResultSet resultSet = conn.prepareStatement("PRAGMA table_info(Todos);").executeQuery();
-        while (resultSet.next()) {
-            System.out.println(resultSet.getString("name"));
-        } */
-        /* Get tables from master */
-        /* ResultSet resultSet = conn.prepareStatement(
-            "SELECT * FROM sqlite_master WHERE type='table';").executeQuery();
-        while (resultSet.next()) {
-            System.out.println(resultSet.getString("name"));
-        } */
-        
-        
+        Todo newTodo = databaseTodoDao.read(1);
+        newTodo.toggleDone();
+        databaseTodoDao.update(newTodo);
+        System.out.println(databaseTodoDao.list());
+
     }
     
+
 }

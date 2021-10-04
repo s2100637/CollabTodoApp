@@ -35,14 +35,13 @@ public class DatabaseConnector {
                 + "id INTEGER PRIMARY KEY, \n" 
                 + "heading TEXT check(length(heading) <= 20), \n"
                 + "content TEXT check(length(content) <= 500), \n" 
-                + "done INTEGER NOT NULL check(done = 1 OR done = 0));";
+                + "done TEXT NOT NULL check(done = 'false' OR done = 'true'));";
 
                 // try w/resources, closes the connection after use
                 try (Connection connection = createConnection()) {
                     Statement statement = connection.createStatement();
                     statement.execute(sql);
                     System.out.println("Tietokanta luotu");
-                    System.out.println(connection.isClosed());
                 } catch (SQLException e) {
                     System.out.println(e.getMessage());
                 } 

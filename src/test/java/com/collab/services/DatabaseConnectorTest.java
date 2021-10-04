@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -43,7 +43,7 @@ public class DatabaseConnectorTest {
         PRAGMA table_info(Todos);
     */
     /* Drop tables after testing? */
-    @BeforeEach
+    @AfterAll
     void tearDown() {
         
     }
