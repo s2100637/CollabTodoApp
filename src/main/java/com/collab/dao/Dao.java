@@ -14,7 +14,7 @@ public interface Dao<T, K> {
     T read(K key) throws SQLException;
 
     // update a todo
-    T update(T object) throws SQLException;
+    void update(T object) throws SQLException;
 
     // delete a todo
     void delete(K key) throws SQLException;
